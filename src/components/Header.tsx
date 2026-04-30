@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { navigation } from "../content";
 
@@ -12,11 +13,14 @@ export function Header() {
       <div className="pointer-events-auto flex w-full max-w-4xl items-center justify-between rounded-full border border-border/40 bg-background/70 px-6 py-3 backdrop-blur-xl shadow-lg shadow-black/20">
         <div className="flex items-center">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 group">
-            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary border border-primary/20 shadow-sm transition-transform group-hover:scale-105">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </span>
+            <div className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-sm transition-transform group-hover:scale-105">
+              <Image 
+                src="/logoCropped.png" 
+                alt="Cadence Logo" 
+                fill
+                className="object-contain"
+              />
+            </div>
             <span className="inline-block font-bold tracking-tight text-foreground">Cadence</span>
           </Link>
         </div>
