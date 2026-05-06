@@ -112,7 +112,6 @@ export const footerContent = {
     { name: "Testimonials", href: "#testimonials" },
     { name: "Pricing", href: "#pricing" },
     { name: "FAQ", href: "#faq" },
-    { name: "404", href: "/404" },
   ],
   companyLinks: [
     { name: "Home", href: "/" },

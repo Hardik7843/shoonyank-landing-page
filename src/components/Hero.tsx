@@ -13,7 +13,7 @@ export function Hero() {
       </p>
       <div className="mt-10 flex flex-col gap-4 sm:flex-row">
         <Link
-          href="#get-started"
+          href="#contact"
           className="rounded-md bg-primary px-8 py-3 text-lg font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
           {heroContent.ctaPrimary}
