@@ -9,8 +9,8 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-16">
           <div className="flex flex-col justify-between max-w-[280px]">
             <div>
-              <div className="mb-6 flex items-center gap-3">
-                <div className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-sm">
+              <div className="mb-3 flex items-center gap-3">
+                <div className="relative h-20 w-40">
                   <Image
                     src="/logoCropped.png"
                     alt="Cadence Logo"
@@ -18,9 +18,6 @@ export function Footer() {
                     className="object-contain"
                   />
                 </div>
-                <span className="font-semibold text-xl text-foreground tracking-tight">
-                  Shoonyank Labs
-                </span>
               </div>
               <p className="text-[15px] leading-relaxed text-muted">
                 {footerContent.brandText}

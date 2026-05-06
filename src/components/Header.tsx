@@ -12,19 +12,22 @@ export function Header() {
     <header className="fixed left-0 right-0 top-6 z-50 flex flex-col items-center px-4 pointer-events-none">
       <div className="pointer-events-auto flex w-full max-w-4xl items-center justify-between rounded-full border border-border/40 bg-background/70 px-6 py-3 backdrop-blur-xl shadow-lg shadow-black/20">
         <div className="flex items-center">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 group">
-            <div className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-sm transition-transform group-hover:scale-105">
-              <Image 
-                src="/logoCropped.png" 
-                alt="Cadence Logo" 
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center gap-2 group"
+          >
+            <div className="relative flex h-12 w-24 items-center justify-center overflow-hidden rounded-sm transition-transform group-hover:scale-105">
+              <Image
+                src="/logoCropped.png"
+                alt="Cadence Logo"
                 fill
                 className="object-contain"
               />
             </div>
-            <span className="inline-block font-bold tracking-tight text-foreground">Cadence</span>
           </Link>
         </div>
-        
+
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex">
           {navigation.map((item) => (
@@ -37,7 +40,7 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        
+
         <div className="flex items-center gap-2">
           {/* Mobile Menu Toggle Button */}
           <button
@@ -45,11 +48,26 @@ export function Header() {
             className="flex h-9 w-9 items-center justify-center rounded-full text-foreground hover:bg-muted-background md:hidden"
             aria-label="Toggle Menu"
           >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -92,4 +110,3 @@ export function Header() {
     </header>
   );
 }
-

@@ -9,20 +9,21 @@ export const navigation = [
 export const heroContent = {
   headline: "Build Systems That Actually Reduce Work and Increase Output",
   subtext:
-    "We design and build software that automates processes, improves decision-making, and removes repetitive work from your business.",
+    "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
   ctaPrimary: "Get Started",
   ctaSecondary: "Book a Consultation",
 };
 
 export const problemContent = {
-  headline: "Most businesses are slowed down by the same issues:",
+  headline: "Most businesses are slowed down by the same problems",
   issues: [
     "Too much manual work",
     "Disconnected tools",
     "Slow decisions",
     "Repetitive tasks",
   ],
-  conclusion: "We fix these by building systems that work in real operations.",
+  conclusion:
+    "We solve these by building systems that work in real operations.",
 };
 
 export const whatWeDoContent = {
