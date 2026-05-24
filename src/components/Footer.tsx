@@ -27,9 +27,6 @@ export function Footer() {
             {/* Desktop only - bottom left */}
             <div className="hidden md:flex mt-20 items-center gap-2 text-[13px] text-muted">
               <span>Created by</span>
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-border text-[9px] font-bold text-foreground">
-                CN
-              </span>
               <span className="font-medium text-foreground">
                 Shoonyank Pvt Ltd
               </span>
@@ -76,10 +73,7 @@ export function Footer() {
           {/* Mobile only - bottom stack */}
           <div className="flex md:hidden mt-2 pt-8 border-t border-border/40 items-center gap-2 text-[13px] text-muted">
             <span>Created by</span>
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-border text-[9px] font-bold text-foreground">
-              CN
-            </span>
-            <span className="font-medium text-foreground">Company Name</span>
+            <span className="font-medium text-foreground">Shoonyank Pvt Ltd</span>
           </div>
         </div>
       </div>
