@@ -13,9 +13,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shoonyank Labs",
+  title: {
+    default: "Shoonyank Labs",
+    template: "%s | Shoonyank Labs",
+  },
   description:
     "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: {
+      default: "Shoonyank Labs",
+      template: "%s | Shoonyank Labs",
+    },
+    description:
+      "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
+    url: "https://shoonyanklabs.com",
+    siteName: "Shoonyank Labs",
+    images: [
+      {
+        url: "/logoCropped.png",
+        width: 1200,
+        height: 630,
+        alt: "Shoonyank Labs",
+        type: "image/png",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: {
+      default: "Shoonyank Labs",
+      template: "%s | Shoonyank Labs",
+    },
+    description:
+      "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
+    images: ["/logoCropped.png"],
+  },
 };
 
 export default function RootLayout({

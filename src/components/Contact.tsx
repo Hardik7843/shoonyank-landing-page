@@ -2,64 +2,48 @@
 
 import { useState } from "react";
 import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { contactContent } from "../content";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   company: z.string().min(2, "Company name must be at least 2 characters"),
-  problemStatement: z.string().min(10, "Please describe your problem in more detail"),
+  problemStatement: z
+    .string()
+    .min(10, "Please describe your problem in more detail"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export function Contact() {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    company: "",
-    problemStatement: "",
-  });
-  
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when typing
-    if (errors[name as keyof ContactFormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    mode: "onTouched",
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      problemStatement: "",
+    },
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setErrors({});
-    
+  const onSubmit = async (data: ContactFormData) => {
     try {
-      // Validate form data
-      contactSchema.parse(formData);
-      
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setSuccess(true);
-      setFormData({ name: "", email: "", company: "", problemStatement: "" });
+      reset();
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
-        error.issues.forEach((err: z.ZodIssue) => {
-          if (err.path[0]) {
-            newErrors[err.path[0] as keyof ContactFormData] = err.message;
-          }
-        });
-        setErrors(newErrors);
-      }
-    } finally {
-      setIsSubmitting(false);
+      console.error("Form submission error:", error);
     }
   };
 
@@ -70,12 +54,16 @@ export function Contact() {
           <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:text-4xl">
             {contactContent.headline}
           </h2>
-          
+
           {success ? (
             <div className="rounded-lg border border-primary/50 bg-primary/10 p-8 text-center">
-              <h3 className="mb-2 text-xl font-bold text-primary">Thank you!</h3>
-              <p className="text-muted">We've received your message and will be in touch shortly.</p>
-              <button 
+              <h3 className="mb-2 text-xl font-bold text-primary">
+                Thank you!
+              </h3>
+              <p className="text-muted">
+                We&apos;ve received your message and will be in touch shortly.
+              </p>
+              <button
                 onClick={() => setSuccess(false)}
                 className="mt-6 text-sm font-medium text-primary hover:underline"
               >
@@ -83,72 +71,116 @@ export function Contact() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6 rounded-xl border border-border bg-card p-8 shadow-lg">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6 rounded-xl border border-border bg-card p-8 shadow-lg"
+            >
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground">
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-medium text-foreground"
+                  >
                     {contactContent.fields.name}
+                    <span className="text-destructive ml-1" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="name"
-                    name="name"
                     type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.name ? 'border-destructive' : 'border-border'}`}
+                    {...register("name")}
+                    aria-invalid={errors.name ? "true" : "false"}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.name ? "border-destructive" : "border-border"}`}
                   />
-                  {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
+                  {errors.name && (
+                    <p id="name-error" className="text-xs text-destructive">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-foreground">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-medium text-foreground"
+                  >
                     {contactContent.fields.email}
+                    <span className="text-destructive ml-1" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="email"
-                    name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.email ? 'border-destructive' : 'border-border'}`}
+                    {...register("email")}
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.email ? "border-destructive" : "border-border"}`}
                   />
-                  {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+                  {errors.email && (
+                    <p id="email-error" className="text-xs text-destructive">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
-              
+
               <div className="space-y-2">
-                <label htmlFor="company" className="text-sm font-medium text-foreground">
+                <label
+                  htmlFor="company"
+                  className="text-sm font-medium text-foreground"
+                >
                   {contactContent.fields.company}
+                  <span className="text-destructive ml-1" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="company"
-                  name="company"
                   type="text"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.company ? 'border-destructive' : 'border-border'}`}
+                  {...register("company")}
+                  aria-invalid={errors.company ? "true" : "false"}
+                  aria-describedby={
+                    errors.company ? "company-error" : undefined
+                  }
+                  className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.company ? "border-destructive" : "border-border"}`}
                 />
-                {errors.company && <p className="text-xs text-destructive">{errors.company}</p>}
+                {errors.company && (
+                  <p id="company-error" className="text-xs text-destructive">
+                    {errors.company.message}
+                  </p>
+                )}
               </div>
-              
+
               <div className="space-y-2">
-                <label htmlFor="problemStatement" className="text-sm font-medium text-foreground">
+                <label
+                  htmlFor="problemStatement"
+                  className="text-sm font-medium text-foreground"
+                >
                   {contactContent.fields.problemStatement}
+                  <span className="text-destructive ml-1" aria-hidden="true">*</span>
                 </label>
                 <textarea
                   id="problemStatement"
-                  name="problemStatement"
                   rows={4}
-                  value={formData.problemStatement}
-                  onChange={handleChange}
-                  className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.problemStatement ? 'border-destructive' : 'border-border'}`}
+                  {...register("problemStatement")}
+                  aria-invalid={errors.problemStatement ? "true" : "false"}
+                  aria-describedby={
+                    errors.problemStatement
+                      ? "problemStatement-error"
+                      : undefined
+                  }
+                  className={`w-full rounded-md border bg-input px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary ${errors.problemStatement ? "border-destructive" : "border-border"}`}
                 />
-                {errors.problemStatement && <p className="text-xs text-destructive">{errors.problemStatement}</p>}
+                {errors.problemStatement && (
+                  <p
+                    id="problemStatement-error"
+                    className="text-xs text-destructive"
+                  >
+                    {errors.problemStatement.message}
+                  </p>
+                )}
               </div>
-              
+
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={!isValid || isSubmitting}
                 className="w-full rounded-md bg-primary py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
               >
                 {isSubmitting ? "Submitting..." : contactContent.cta}
