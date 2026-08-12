@@ -21,7 +21,7 @@ export default function Home() {
         <Tracks />
         <Process />
         <WhyUs />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </main>
       <Footer />

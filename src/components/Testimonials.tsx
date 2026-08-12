@@ -32,18 +32,11 @@ export function Testimonials() {
                   <div className="text-sm font-medium text-ink-2">
                     {item.name}
                   </div>
-                  <div className="text-[12.5px] text-ink-soft">
-                    {item.role}
-                  </div>
+                  <div className="text-[12.5px] text-ink-soft">{item.role}</div>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Testimonials Note */}
-        <div className="font-mono text-[12px] text-ink-soft text-center mt-8 border border-dashed border-line p-3.5 rounded-md reveal">
-          {testimonialsContent.note}
         </div>
       </div>
     </section>
