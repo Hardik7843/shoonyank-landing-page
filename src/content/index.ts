@@ -92,6 +92,12 @@ export const servicesContent = {
       description:
         "Infrastructure setup, deployment pipelines and ongoing management across AWS, GCP and Azure.",
     },
+    {
+      num: "05",
+      title: "AI Integration services",
+      description:
+        "Integrating AI models into existing systems, and build smart systems",
+    },
   ],
 };
 
@@ -222,24 +228,17 @@ export const testimonialsContent = {
   items: [
     {
       quote:
-        '"Replace with a real client quote — 1 to 2 sentences on the outcome, not just the process."',
-      avatar: "XX",
-      name: "Client name",
-      role: "Role, Company",
+        '"I couldn\'t be happier with the final outcome, Shoonyank has managed to capture my vision perfectly and deliver a product that exceeds all expectations. The entire team has been an absolute pleasure to work with — professional, responsive, and genuinely invested in the success of the project."',
+      avatar: "AR",
+      name: "Amit Ramina",
+      role: "Founder, Hungry V",
     },
     {
       quote:
-        '"Replace with a real client quote — 1 to 2 sentences on the outcome, not just the process."',
-      avatar: "XX",
-      name: "Client name",
-      role: "Role, Company",
-    },
-    {
-      quote:
-        '"Replace with a real client quote — 1 to 2 sentences on the outcome, not just the process."',
-      avatar: "XX",
-      name: "Client name",
-      role: "Role, Company",
+        '"They have built a robust, user-friendly platform that has significantly streamlined our operations and improved our customer satisfaction. The Shoonyank team is highly professional, responsive, and dedicated to delivering exceptional results. It has been a pleasure working with them, and we highly recommend their services."',
+      avatar: "RA",
+      name: "",
+      role: "Raibo Infotech Pvt Ltd",
     },
   ],
 };
