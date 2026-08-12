@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Shoonyank",
     images: [
       {
-        url: "/logoCropped.png",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "Shoonyank",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Shoonyank — Software built to engineering standards",
     description:
       "Shoonyank Pvt Ltd designs and builds custom software, mobile apps, databases and cloud infrastructure — held to engineering benchmarks, not marketing ones.",
-    images: ["/logoCropped.png"],
+    images: ["/logo.png"],
   },
 };
 
