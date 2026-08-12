@@ -11,14 +11,23 @@ const contactSchema = z.object({
   email: z.string().email("Please enter a valid work email address"),
   company: z.string().optional(),
   projectType: z.enum(
-    ["Landing page", "Custom software / platform", "Mobile app", "Cloud / infrastructure", "Something else"],
+    [
+      "Landing page",
+      "Custom software / platform",
+      "Mobile app",
+      "Cloud / infrastructure",
+      "Something else",
+    ],
     {
       message: "Please select a project type",
-    }
+    },
   ),
   problemStatement: z
     .string()
-    .min(10, "Please describe what you are trying to build (minimum 10 characters)"),
+    .min(
+      10,
+      "Please describe what you are trying to build (minimum 10 characters)",
+    ),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -95,7 +104,10 @@ export function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3.5">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col gap-3.5"
+              >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {/* Full Name */}
                   <div className="space-y-1">
@@ -149,14 +161,40 @@ export function Contact() {
                       className={`bg-white/5 border text-white px-3.5 py-3 rounded-custom font-sans text-sm w-full focus:outline-none focus:border-rust transition-colors duration-150 ${errors.projectType ? "border-[#C1432A]" : "border-white/18"} select-placeholder-color`}
                       defaultValue=""
                     >
-                      <option value="" disabled className="text-ink-soft bg-ink">
+                      <option
+                        value=""
+                        disabled
+                        className="text-ink-soft bg-ink"
+                      >
                         Project type
                       </option>
-                      <option value="Landing page" className="bg-ink text-white">Landing page</option>
-                      <option value="Custom software / platform" className="bg-ink text-white">Custom software / platform</option>
-                      <option value="Mobile app" className="bg-ink text-white">Mobile app</option>
-                      <option value="Cloud / infrastructure" className="bg-ink text-white">Cloud / infrastructure</option>
-                      <option value="Something else" className="bg-ink text-white">Something else</option>
+                      <option
+                        value="Landing page"
+                        className="bg-ink text-white"
+                      >
+                        Landing page
+                      </option>
+                      <option
+                        value="Custom software / platform"
+                        className="bg-ink text-white"
+                      >
+                        Custom software / platform
+                      </option>
+                      <option value="Mobile app" className="bg-ink text-white">
+                        Mobile app
+                      </option>
+                      <option
+                        value="Cloud / infrastructure"
+                        className="bg-ink text-white"
+                      >
+                        Cloud / infrastructure
+                      </option>
+                      <option
+                        value="Something else"
+                        className="bg-ink text-white"
+                      >
+                        Something else
+                      </option>
                     </select>
                     {errors.projectType && (
                       <p className="text-xs text-[#C1432A] px-1">
@@ -185,7 +223,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={!isValid || isSubmitting}
-                  className="bg-rust text-white border border-rust px-6 py-3.25 rounded-custom font-mono text-sm font-medium cursor-pointer mt-1.5 self-start hover:opacity-90 transition-opacity disabled:opacity-50"
+                  className="bg-rust text-white border border-rust px-6 py-3.25 rounded-custom font-mono text-sm font-medium cursor-pointer mt-1.5 self-start hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending brief..." : "Send project brief →"}
                 </button>

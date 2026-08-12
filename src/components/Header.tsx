@@ -46,7 +46,7 @@ export function Header() {
         <div className="hidden md:block">
           <Link
             href="#contact"
-            className="font-mono text-[13px] font-medium text-ink bg-rust border border-rust px-[18px] py-2.25 rounded-custom hover:opacity-88 transition-opacity duration-150"
+            className="inline-block font-mono text-[13px] font-medium text-white bg-rust border border-rust px-[18px] py-2.25 rounded-custom hover:opacity-88 hover:-translate-y-[1px] transition duration-150 cursor-pointer"
           >
             Start a project
           </Link>
@@ -110,7 +110,7 @@ export function Header() {
             <Link
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-center font-mono text-[13px] font-medium text-ink bg-rust border border-rust px-4 py-2.5 rounded-custom hover:opacity-88 transition-opacity"
+              className="block text-center font-mono text-[13px] font-medium text-white bg-rust border border-rust px-4 py-2.5 rounded-custom hover:opacity-88 hover:-translate-y-[1px] transition duration-150 cursor-pointer"
             >
               Start a project
             </Link>
