@@ -1,38 +1,130 @@
 @import "tailwindcss";
 
-:root {
-  --background: #fafafa;
-  --foreground: #09090b;
-  --primary: #2563eb;
-  --primary-foreground: #ffffff;
-  --muted: #71717a;
-  --muted-background: #f4f4f5;
-  --border: #e4e4e7;
-  --card: #ffffff;
-  --input: #ffffff;
-  --destructive: #ef4444;
+@theme {
+  --color-ink: #10151F;
+  --color-ink-2: #1B2430;
+  --color-paper: #EDF0EA;
+  --color-paper-2: #E4E8DE;
+  --color-line: #CBD1C2;
+  --color-line-soft: #DADFD1;
+  --color-rust: #C1432A;
+  --color-rust-dark: #8F3120;
+  --color-teal: #0F5C4C;
+  --color-teal-light: #E4EEE9;
+  --color-ink-soft: #5B6472;
+  --color-white: #F7F8F4;
+
+  --font-sans: var(--font-ibm-plex-sans), sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-display: var(--font-space-grotesk), sans-serif;
+  
+  --radius-custom: 4px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-background: var(--muted-background);
-  --color-border: var(--border);
-  --color-card: var(--card);
-  --color-input: var(--input);
-  --color-destructive: var(--destructive);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #EDF0EA;
+  --foreground: #1B2430;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink-2);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom layout and decoration helpers */
+
+.wrap {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (max-width: 720px) {
+  .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.hero-bg {
+  background-color: var(--color-ink);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Engineering benchmark cards corner markers */
+.bm-card {
+  position: relative;
+  background-color: var(--color-paper);
+}
+
+.bm-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid var(--color-rust);
+  border-left: 1.5px solid var(--color-rust);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.bm-card::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 9px;
+  height: 9px;
+  border-bottom: 1.5px solid var(--color-rust);
+  border-right: 1.5px solid var(--color-rust);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.bm-card:hover::before,
+.bm-card:hover::after {
+  opacity: 1;
+}
+
+/* Process connector line */
+.proc-step-line::after {
+  content: '';
+  position: absolute;
+  top: 17px;
+  right: 0;
+  width: calc(100% - 46px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
 }

@@ -9,102 +9,112 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-6 z-50 flex flex-col items-center px-4 pointer-events-none">
-      <div className="pointer-events-auto flex w-full max-w-4xl items-center justify-between rounded-full border border-border/40 bg-background/70 px-6 py-3 backdrop-blur-xl shadow-lg shadow-black/20">
-        <div className="flex items-center">
+    <header className="sticky top-0 z-50 w-full bg-ink/96 border-b border-white/8 backdrop-blur-md">
+      <nav className="flex items-center justify-between px-8 py-[12px] max-w-[1140px] mx-auto">
+        <Link
+          href="#"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="flex items-center gap-2.5 font-display font-semibold text-[19px] text-white hover:opacity-90 transition-opacity"
+        >
+          <div className="relative flex h-16 w-32 items-center justify-center overflow-hidden rounded-sm">
+            <Image
+              src="/logoCropped.png"
+              alt="Shoonyank Logo"
+              fill
+              className="object-contain filter"
+              priority
+            />
+          </div>
+          {/* <span className="font-display tracking-tight">Shoonyank</span> */}
+        </Link>
+
+        {/* Desktop Nav Links */}
+        <ul className="hidden md:flex items-center gap-8 list-none">
+          {navigation.map((item) => (
+            <li key={item.name}>
+              <Link
+                href={item.href}
+                className="text-[#B8BFC9] text-sm hover:text-white transition-colors duration-150"
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
           <Link
-            href="/"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-2 group"
+            href="#contact"
+            className="font-mono text-[13px] font-medium text-ink bg-rust border border-rust px-[18px] py-2.25 rounded-custom hover:opacity-88 transition-opacity duration-150"
           >
-            <div className="relative flex h-12 w-24 items-center justify-center overflow-hidden rounded-sm transition-transform group-hover:scale-105">
-              <Image
-                src="/logoCropped.png"
-                alt="Cadence Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
+            Start a project
           </Link>
         </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden items-center gap-1 md:flex">
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-muted transition-all hover:bg-muted-background hover:text-foreground"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          {/* Mobile Menu Toggle Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-foreground hover:bg-muted-background md:hidden"
-            aria-label="Toggle Menu"
-          >
+        {/* Mobile Menu Toggle Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="flex md:hidden text-white text-2xl focus:outline-none cursor-pointer"
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? (
             <svg
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
-          </button>
-
-          <Link
-            href="#contact"
-            className="hidden md:block rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-transform hover:scale-105 active:scale-95 shadow-md"
-          >
-            Get Started
-          </Link>
-        </div>
-      </div>
+          ) : (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
+        </button>
+      </nav>
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="pointer-events-auto absolute top-[calc(100%+12px)] flex w-full max-w-[calc(100%-2rem)] flex-col overflow-hidden rounded-2xl border border-border/40 bg-background/95 backdrop-blur-2xl shadow-xl shadow-black/40 md:hidden">
-          <nav className="flex flex-col p-4">
+        <div className="md:hidden border-t border-white/8 bg-ink/96 backdrop-blur-md px-8 py-4 space-y-4">
+          <ul className="flex flex-col gap-4 list-none">
             {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="rounded-lg px-4 py-3 text-sm font-medium text-muted transition-colors hover:bg-muted-background hover:text-foreground"
-              >
-                {item.name}
-              </Link>
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-[#B8BFC9] text-sm hover:text-white transition-colors py-1"
+                >
+                  {item.name}
+                </Link>
+              </li>
             ))}
-            <div className="mt-4 border-t border-border/40 pt-4 px-2">
-              <Link
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex w-full items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition-transform hover:scale-[1.02] active:scale-95 shadow-md"
-              >
-                Get Started
-              </Link>
-            </div>
-          </nav>
+          </ul>
+          <div className="pt-2 border-t border-white/8">
+            <Link
+              href="#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-center font-mono text-[13px] font-medium text-ink bg-rust border border-rust px-4 py-2.5 rounded-custom hover:opacity-88 transition-opacity"
+            >
+              Start a project
+            </Link>
+          </div>
         </div>
       )}
     </header>

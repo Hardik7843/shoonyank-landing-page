@@ -4,77 +4,66 @@ import { footerContent } from "../content";
 
 export function Footer() {
   return (
-    <footer className="bg-background pt-16 md:pt-24 pb-8 md:pb-12 border-t border-border/40">
-      <div className="container mx-auto px-6 md:px-8 max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-16">
-          <div className="flex flex-col justify-between max-w-[280px]">
-            <div>
-              <div className="mb-3 flex items-center gap-3">
-                <div className="relative h-20 w-40">
-                  <Image
-                    src="/logoCropped.png"
-                    alt="Cadence Logo"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+    <footer className="bg-ink border-t border-white/10 pt-11 pb-7 text-white">
+      <div className="wrap">
+        <div className="flex justify-between flex-wrap gap-8 mb-8">
+          <div>
+            <div className="font-display font-semibold text-lg flex items-center gap-2 mb-2.5">
+              <div className="relative flex h-20 w-40 items-center justify-center overflow-hidden rounded-sm">
+                <Image
+                  src="/logoCropped.png"
+                  alt="Shoonyank Logo"
+                  fill
+                  className="object-contain filter"
+                />
               </div>
-              <p className="text-[15px] leading-relaxed text-muted">
-                {footerContent.brandText}
-              </p>
+              {/* <span className="font-display tracking-tight">Shoonyank</span> */}
             </div>
-
-            {/* Desktop only - bottom left */}
-            <div className="hidden md:flex mt-20 items-center gap-2 text-[13px] text-muted">
-              <span>Created by</span>
-              <span className="font-medium text-foreground">
-                Shoonyank Pvt Ltd
-              </span>
-            </div>
+            <p className="text-[#8D95A2] text-[13.5px] max-w-[280px] leading-relaxed">
+              {footerContent.description}
+            </p>
           </div>
 
-          {/* Links Grid */}
-          <div className="grid grid-cols-2 gap-8 md:gap-32 w-full md:w-auto">
-            <div className="flex flex-col">
-              <h4 className="mb-6 font-semibold text-[15px] text-foreground">
-                Navigation
-              </h4>
-              <nav className="flex flex-col space-y-4">
-                {footerContent.navigation.map((item) => (
+          <div className="flex gap-14 flex-wrap">
+            <div className="min-w-[100px]">
+              <h5 className="font-mono text-xs text-[#7FC7AB] tracking-[0.08em] uppercase mb-3.5">
+                Site
+              </h5>
+              <div className="flex flex-col">
+                {footerContent.siteLinks.map((link) => (
                   <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-[14px] text-muted transition-colors hover:text-foreground"
+                    key={link.name}
+                    href={link.href}
+                    className="block text-[#AEB5C0] text-[13.5px] py-1.25 hover:text-white transition-colors duration-150"
                   >
-                    {item.name}
+                    {link.name}
                   </Link>
                 ))}
-              </nav>
+              </div>
             </div>
 
-            <div className="flex flex-col">
-              <h4 className="mb-6 font-semibold text-[15px] text-foreground">
-                Company Links
-              </h4>
-              <nav className="flex flex-col space-y-4">
-                {footerContent.companyLinks.map((item) => (
+            <div className="min-w-[100px]">
+              <h5 className="font-mono text-xs text-[#7FC7AB] tracking-[0.08em] uppercase mb-3.5">
+                Company
+              </h5>
+              <div className="flex flex-col">
+                {footerContent.companyLinks.map((link) => (
                   <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-[14px] text-muted transition-colors hover:text-foreground"
+                    key={link.name}
+                    href={link.href}
+                    className="block text-[#AEB5C0] text-[13.5px] py-1.25 hover:text-white transition-colors duration-150"
                   >
-                    {item.name}
+                    {link.name}
                   </Link>
                 ))}
-              </nav>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Mobile only - bottom stack */}
-          <div className="flex md:hidden mt-2 pt-8 border-t border-border/40 items-center gap-2 text-[13px] text-muted">
-            <span>Created by</span>
-            <span className="font-medium text-foreground">Shoonyank Pvt Ltd</span>
-          </div>
+        <div className="border-t border-white/8 pt-5.5 flex justify-between flex-wrap gap-2.5 text-[12.5px] text-[#6E7684] font-mono">
+          <span>{footerContent.copyright}</span>
+          <span>{footerContent.attribution}</span>
         </div>
       </div>
     </footer>

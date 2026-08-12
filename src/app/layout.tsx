@@ -1,42 +1,43 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Shoonyank Labs",
-    template: "%s | Shoonyank Labs",
-  },
+  title: "Shoonyank — Software built to engineering standards",
   description:
-    "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
+    "Shoonyank Pvt Ltd designs and builds custom software, mobile apps, databases and cloud infrastructure — held to engineering benchmarks, not marketing ones.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: {
-      default: "Shoonyank Labs",
-      template: "%s | Shoonyank Labs",
-    },
+    title: "Shoonyank — Software built to engineering standards",
     description:
-      "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
-    url: "https://shoonyanklabs.com",
-    siteName: "Shoonyank Labs",
+      "Shoonyank Pvt Ltd designs and builds custom software, mobile apps, databases and cloud infrastructure — held to engineering benchmarks, not marketing ones.",
+    url: "https://shoonyank.com",
+    siteName: "Shoonyank",
     images: [
       {
         url: "/logoCropped.png",
         width: 1200,
         height: 630,
-        alt: "Shoonyank Labs",
+        alt: "Shoonyank",
         type: "image/png",
       },
     ],
@@ -45,12 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: {
-      default: "Shoonyank Labs",
-      template: "%s | Shoonyank Labs",
-    },
+    title: "Shoonyank — Software built to engineering standards",
     description:
-      "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
+      "Shoonyank Pvt Ltd designs and builds custom software, mobile apps, databases and cloud infrastructure — held to engineering benchmarks, not marketing ones.",
     images: ["/logoCropped.png"],
   },
 };
@@ -63,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

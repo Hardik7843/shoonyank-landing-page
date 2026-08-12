@@ -1,123 +1,242 @@
 export const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Problem", href: "#problem" },
+  { name: "Benchmarks", href: "#benchmarks" },
   { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
+  { name: "Process", href: "#process" },
+  { name: "Why us", href: "#why-us" },
   { name: "Contact", href: "#contact" },
 ];
 
 export const heroContent = {
-  headline: "Build Systems That Actually Reduce Work and Increase Output",
-  subtext:
-    "We design and build software that automates workflows, improves decision-making, and removes repetitive work from your business.",
-  ctaPrimary: "Get Started",
-  ctaSecondary: "Book a Consultation",
+  tag: "Accepting new projects for Q4 2026",
+  headline: "Software held to engineering standards, not marketing ones.",
+  lead: "Shoonyank builds custom software, mobile apps, databases and cloud infrastructure — measured against benchmarks most agencies never mention, because most agencies aren't graded on them.",
+  ctaPrimary: "Start a project",
+  ctaSecondary: "See our benchmarks",
+  servicesText: "WEB · MOBILE · DATABASE · CLOUD",
+  deliveryText: "3 DAYS – 3 MONTHS",
+  basedInText: "INDIA",
 };
 
-export const problemContent = {
-  headline: "Most businesses are slowed down by the same problems",
-  issues: [
-    "Too much manual work",
-    "Disconnected tools",
-    "Slow decisions",
-    "Repetitive tasks",
-  ],
-  conclusion:
-    "We solve these by building systems that work in real operations.",
-};
-
-export const whatWeDoContent = {
-  headline: "What we do",
-  subtext:
-    "We help businesses work better through process automation, custom tools, system integration, and optimization.",
+export const benchmarksContent = {
+  eyebrow: "Our engineering standard",
+  headline: "What actually makes software good?",
+  subtext: "Not opinions — a fixed set of benchmarks every project we ship is checked against, before it ever reaches a client.",
   items: [
     {
-      title: "Process Automation",
-      description: "Reduce overhead of manual work and errors",
-      icon: "lucide:settings-2",
+      code: "BM—01",
+      title: "Developers own bad input, not users",
+      description: "If wrong input breaks something, that's a validation gap in the code — not a user mistake. We build defensively so the person on the other end is never blamed for our oversight.",
     },
     {
-      title: "Custom Tools",
-      description: "Build tools that work how your business works",
-      icon: "lucide:settings",
+      code: "BM—02",
+      title: "Always resume, never restart",
+      description: "A dropped connection or closed tab shouldn't cost progress. Software should pick up exactly where it left off, not send someone back to the start.",
     },
     {
-      title: "System Integration",
-      description: "Connect all your tools in single workflow",
-      icon: "lucide:layers",
+      code: "BM—03",
+      title: "Graceful scaling, graceful shutdown",
+      description: "Handling 10x traffic matters as much as shutting down cleanly without losing data or leaving processes hanging. We design for both edges, not just the busy one.",
     },
     {
-      title: "Optimization",
-      description: "Improve processes, performance and efficiency",
-      icon: "lucide:calendar",
+      code: "BM—04",
+      title: "Bugs breed in dirty environments",
+      description: "Most production bugs trace back to a messy staging setup. We keep environments clean and consistent, so what passes staging actually behaves the same in production.",
     },
     {
-      title: "One Tool, Everything",
-      description:
-        "Tasks, notes, and reminders — all in one seamless workspace.",
-      icon: "lucide:puzzle",
+      code: "BM—05",
+      title: "Smart, not just functional",
+      description: "Software shouldn't just take input and return output. It should anticipate, validate and guide — smartware, not a glorified calculator.",
     },
     {
-      title: "Visible Progress",
-      description:
-        "Track real progress, not just activity, and finish each day with purpose.",
-      icon: "lucide:line-chart",
+      code: "BM—06",
+      title: "Every extra second costs a user",
+      description: "Latency isn't a minor detail — it's churn. We treat load time and response time as core product metrics, not an afterthought fixed post-launch.",
     },
   ],
 };
 
-export const aboutUsContent = {
-  whoWeAre: {
-    title: "Who We Are",
-    description:
-      "We build systems that improve how businesses operate by simplifying workflows and reducing manual effort.",
-  },
-  ourApproach: {
-    title: "Our Approach",
-    items: [
-      "Start with the problem",
-      "Keep solutions simple",
-      "Focus on measurable results",
-      "Build for long-term use",
-    ],
-  },
-  whyUs: {
-    title: "Why Us / What Makes Us Different",
-    items: [
-      "No unnecessary complexity",
-      "Built for real usage",
-      "Focus on execution",
-      "Aligned with business goals",
-    ],
-  },
+export const servicesContent = {
+  eyebrow: "What we build",
+  headline: "Four disciplines, one standard",
+  subtext: "Whatever the surface — web, mobile, data, infrastructure — it's held to the same benchmarks above.",
+  items: [
+    {
+      num: "01",
+      title: "Custom software development",
+      description: "Web platforms, internal tools and business systems built around how your team actually works, not a generic template.",
+    },
+    {
+      num: "02",
+      title: "Android / iOS app development",
+      description: "Native and cross-platform mobile apps engineered for offline resilience, fast cold-starts, and smooth releases.",
+    },
+    {
+      num: "03",
+      title: "Database development",
+      description: "Schema design, migrations and query optimisation for systems that stay fast as your data grows, not just at launch.",
+    },
+    {
+      num: "04",
+      title: "Cloud computing and management",
+      description: "Infrastructure setup, deployment pipelines and ongoing management across AWS, GCP and Azure.",
+    },
+  ],
+};
+
+export const tracksContent = {
+  eyebrow: "What we promise",
+  headline: "Two tracks, two honest timelines",
+  subtext: "No \"it depends\" quotes. Here's roughly what to expect before you even talk to us.",
+  items: [
+    {
+      title: "Brand landing page",
+      timeline: "3–7 days",
+      description: "A focused, fast-turnaround page built to convert — for a launch, a campaign, or a brand that needs a home online now.",
+      deliverables: [
+        "Responsive design, built and reviewed with you",
+        "Copy structure and SEO basics included",
+        "One round of revisions before handoff",
+        "Deployed and connected to your domain",
+      ],
+      ctaText: "Know more about features and deliverables →",
+      ctaHref: "#contact",
+    },
+    {
+      title: "Custom platforms",
+      timeline: "2–3 months",
+      description: "E-commerce platforms, CRMs and CMS builds — for businesses that need a real system, not a template with your logo on it.",
+      deliverables: [
+        "Discovery and architecture phase upfront",
+        "Staged delivery with milestone check-ins",
+        "Admin tooling and role-based access",
+        "Post-launch support window included",
+      ],
+      ctaText: "Know more about features and deliverables →",
+      ctaHref: "#contact",
+    },
+  ],
+};
+
+export const processContent = {
+  eyebrow: "How we work",
+  headline: "A fixed sequence, every project",
+  subtext: "The order matters — each stage exists to catch what the last one might have missed.",
+  steps: [
+    {
+      step: "1",
+      title: "Discover",
+      description: "Understand the problem, users and constraints before touching a design tool.",
+    },
+    {
+      step: "2",
+      title: "Design",
+      description: "Wireframes and architecture reviewed with you before a line of code is written.",
+    },
+    {
+      step: "3",
+      title: "Build",
+      description: "Development in a clean, mirrored environment — checked against our benchmarks throughout.",
+    },
+    {
+      step: "4",
+      title: "Test",
+      description: "Load, edge-case and failure testing, not just the happy path.",
+    },
+    {
+      step: "5",
+      title: "Deploy & support",
+      description: "Shipped before deadline, with a support window built into every delivery.",
+    },
+  ],
+};
+
+export const whyUsContent = {
+  eyebrow: "Why us",
+  headline: "Built for what happens after launch",
+  items: [
+    {
+      title: "Built for future scale",
+      description: "We architect for the growth you're planning, not just the traffic you have today — so scaling later doesn't mean rebuilding.",
+    },
+    {
+      title: "Best practices, not shortcuts",
+      description: "Code review, testing and documentation aren't optional add-ons here — they're part of how every project is built, by default.",
+    },
+    {
+      title: "Security-first technology choices",
+      description: "Our engineers pick tools based on what's proven and secure for your case, not what's trending this quarter.",
+    },
+    {
+      title: "Committed to shipping early",
+      description: "We build in buffer, not padding — our internal deadlines sit ahead of yours, on purpose.",
+    },
+  ],
+  stats: [
+    {
+      value: "6",
+      label: "Engineering benchmarks every build is checked against",
+    },
+    {
+      value: "4",
+      label: "Core disciplines — web, mobile, data, cloud",
+    },
+    {
+      value: "3–7",
+      label: "Days for a landing page, start to deployed",
+    },
+    {
+      value: "100%",
+      label: "Projects reviewed against our own standard before handoff",
+    },
+  ],
+};
+
+export const testimonialsContent = {
+  eyebrow: "Client feedback",
+  headline: "What it's like to work with us",
+  items: [
+    {
+      quote: "\"Replace with a real client quote — 1 to 2 sentences on the outcome, not just the process.\"",
+      avatar: "XX",
+      name: "Client name",
+      role: "Role, Company",
+    },
+    {
+      quote: "\"Replace with a real client quote — 1 to 2 sentences on the outcome, not just the process.\"",
+      avatar: "XX",
+      name: "Client name",
+      role: "Role, Company",
+    },
+    {
+      quote: "\"Replace with a real client quote — 1 to 2 sentences on the outcome, not just the process.\"",
+      avatar: "XX",
+      name: "Client name",
+      role: "Role, Company",
+    },
+  ],
+  note: "These are placeholders — swap in real client names, roles and quotes before this goes live. Do not publish fabricated testimonials.",
 };
 
 export const contactContent = {
-  headline: "Let's Fix What's Slowing You Down",
-  fields: {
-    name: "Name",
-    email: "Email",
-    company: "Company",
-    problemStatement: "Problem Statement",
-  },
-  cta: "Submit",
+  headline: "Let's fix what's slowing you down",
+  lead: "Tell us what you're building. We'll respond with next steps and a rough timeline within one business day.",
+  email: "hello@shoonyank.com",
+  responseTime: "within 24 hours",
 };
 
 export const footerContent = {
-  brandText: "Your AI-powered companion for effortless productivity.",
-  creator: "Created by Company Name",
-  navigation: [
-    { name: "Features", href: "#features" },
-    { name: "Benefits", href: "#benefits" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "FAQ", href: "#faq" },
+  description: "Custom software, mobile apps, databases and cloud infrastructure — built to engineering benchmarks, not marketing ones.",
+  siteLinks: [
+    { name: "Benchmarks", href: "#benchmarks" },
+    { name: "Services", href: "#services" },
+    { name: "Process", href: "#process" },
+    { name: "Why us", href: "#why-us" },
   ],
   companyLinks: [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "#about" },
     { name: "Contact", href: "#contact" },
-    { name: "Privacy Policy", href: "#privacy" },
-    { name: "Terms of Service", href: "#terms" },
+    { name: "Privacy policy", href: "#" },
+    { name: "Terms of service", href: "#" },
   ],
+  copyright: "© 2026 Shoonyank Pvt Ltd. All rights reserved.",
+  attribution: "Built by Shoonyank Pvt Ltd",
 };
